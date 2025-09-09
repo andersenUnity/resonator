@@ -244,6 +244,7 @@ svg * {
 
 :root{
     --color-light: #fff;
+    --color-light-accent: #f8f8f8;
     --color-dark: rgb(0, 0, 0);
     --color-gray: #8E8B8C;
     --color-gray-light: #CECECE;
@@ -318,7 +319,7 @@ a{
     font-weight: 700;
     align-items: center;
     column-gap: 10px;
-    line-height: 1;
+    line-height: 2;
     text-decoration: none;
 
     white-space: nowrap;
@@ -333,6 +334,14 @@ a{
     &:hover{
         text-decoration: underline;
     }
+}
+
+.headphones-button{
+    border: none;
+    width:45px;
+    aspect-ratio: 1;
+    border-radius: var(--border-radius-common);
+    background: url("/icons/headphones.svg") center / 40% no-repeat var(--color-light);
 }
 
 .title-large{
@@ -556,7 +565,8 @@ a{
 .summary{
     display: flex;
     column-gap: 50px;
-    margin-top: 140px;
+    margin-block: 140px;
+    margin-bottom: 50px;
     justify-content: space-between;
     width: 100%;
     align-items: end;
@@ -617,10 +627,11 @@ a{
         rotate: -90deg;
         font-family: Manrope, sans-serif;
         font-weight: bold;
-        color: #F8F8F8;
+        color: var(--color-light-accent);
     }
 
 }
+
 .summary-image{
     display: inline-flex;
     position: relative;
@@ -628,6 +639,72 @@ a{
     border-radius: var(--border-radius-common);
 }
 
+.top-podcasts{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-block: 95px;
+    width: 100%;
+    background-color: var(--color-light-accent);
+}
+
+.top-podcasts-header{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 50px;
+}
+.top-podcasts-title{
+    margin-bottom: 20px;
+}
+
+.top-podcasts-list{
+    display: flex;
+    width: 100%;
+    column-gap: 80px;
+    overflow-x: auto;
+    padding-inline: 60px;
+    scroll-snap-type: x mandatory;
+}
+
+.top-podcasts-item{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    flex-shrink: 0;
+    width: 785px;
+    border-radius: var(--border-radius-common);
+    overflow: hidden;
+    box-shadow: var(--box-shadow-common);
+    background-color: var(--color-light);
+    scroll-snap-align: center;
+}
+
+.top-podcasts-image-wrapper{
+    position: relative;
+    z-index: 0;
+    & .headphones-button{
+        position: absolute;
+        z-index: 1;
+        top: 10px;
+        right: 10px ;
+    }
+}
+
+.top-podcasts-body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    padding-inline: 45px
+}
+
+.top-podcasts-item-title{
+    border-bottom: 1px solid var(--color-dark) ;
+    font-size: 27px;
+    line-height: 1.26;
+    margin-bottom: 18px;
+}
 
 @media (max-width: 1200px){
   .podcast-audio{
@@ -680,6 +757,22 @@ a{
             font-size: 92px;
         }
     }
+
+    .top-podcasts{
+        padding-block: 50px;
+    }
+
+    .top-podcasts-header{
+        margin-bottom: 30px;
+    }
+
+    .top-podcasts-list{
+        column-gap: 50px;
+    }
+
+    .top-podcasts-item{
+        max-width:600px;
+    }
 }
 
 @media (max-width: 767px) {
@@ -727,5 +820,17 @@ a{
             translate: -5% -10%;
             font-size: clamp(25px, 11.98vw, 92px);
         }
+    }
+
+    .top-podcasts-list{
+        column-gap: 20px;
+        padding-inline: 20px;
+    }
+
+    .top-podcasts-item{
+        max-width: 385px;
+        width: 100%;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 0.5fr;
     }
 }
