@@ -653,6 +653,7 @@ a{
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    text-align: center;
     margin-bottom: 50px;
 }
 .top-podcasts-title{
@@ -666,6 +667,7 @@ a{
     overflow-x: auto;
     padding-inline: 60px;
     scroll-snap-type: x mandatory;
+    margin-bottom: 52px;
 }
 
 .top-podcasts-item{
@@ -704,6 +706,55 @@ a{
     font-size: 27px;
     line-height: 1.26;
     margin-bottom: 18px;
+}
+
+.top-podcasts-pagination{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-inline: auto;
+}
+
+.top-podcasts-pagination-list{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 12px;
+}
+
+.top-podcasts-pagination-item{
+    --paginationPointColor: var(--color-dark);
+
+    width: 20px;
+    height: 20px;
+    &.is-current .top-podcasts-pagination-button {
+        border: 1px solid var(--color-gray);
+    }
+    &:not(.is-current):hover .top-podcasts-pagination-button{
+        --paginationPointColor: var(--color-gray);
+    }
+}
+
+.top-podcasts-pagination-button{
+    display: flex;
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    padding: 0 0;
+    background: transparent;
+    border-color: transparent;
+    &::before{
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        translate: 100% 100%;
+        width: 6px;
+        aspect-ratio: 1;
+        border-radius: 50%;
+        background-color: var(--paginationPointColor);
+    }
 }
 
 @media (max-width: 1200px){
@@ -768,6 +819,7 @@ a{
 
     .top-podcasts-list{
         column-gap: 50px;
+        margin-bottom: 40px;
     }
 
     .top-podcasts-item{
@@ -825,6 +877,7 @@ a{
     .top-podcasts-list{
         column-gap: 20px;
         padding-inline: 20px;
+        margin-bottom: 30px;
     }
 
     .top-podcasts-item{
